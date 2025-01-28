@@ -9,23 +9,24 @@
 
 <body class="bg-gray-100 font-sans">
     
-    <header class="bg-white text-white py-4">
-        <img src="imgs/logo.png" class="h-9 mx-auto">
+    <header class="bg-white text-white py-1 flex items-center">
+        <img src="imgs/logo.png" class="h-12 ml-2"> 
+        <h3 class="text-2xl ml-4 text-black font-bold">BE FOCUSED APP</h3>
     </header>
-
-    <main class="container mx-auto p-4">
-        <section class="add-task-section bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h2 class="text-2xl font-semibold mb-4">To-Do List</h2>
+    <main>
+         <section class="container mx-auto p-4 drop-shadow-xl">
+        <div class="add-task-section bg-white p-6 m-13 rounded-lg shadow-lg mb-4">
+            <h2 class="text-2xl font-bold mb-4">ADD TASK</h2>
 
             <form id="taskForm" class="mb-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label for="taskTitle" class="block text-gray-700 font-medium mb-2">Title *</label>
-                        <input type="text" id="taskTitle" class="w-full border border-gray-300 rounded p-2" placeholder="Enter task title" required>
+                        <input type="text" id="taskTitle" class="w-full border border-gray-300 rounded p-2 drop-shadow-md " placeholder="Enter task title" required>
                     </div>
                     <div>
                         <label for="taskPriority" class="block text-gray-700 font-medium mb-2">Priority</label>
-                        <select id="taskPriority" class="w-full border border-gray-300 rounded p-2">
+                        <select id="taskPriority" class="w-full border border-gray-300 rounded p-2 drop-shadow-md">
                             <option value="low">LOW</option>
                             <option value="medium">MEDIUM</option>
                             <option value="high">HIGH</option>
@@ -34,14 +35,39 @@
                 </div>
                 <div class="mt-4">
                     <label for="taskDescription" class="block text-gray-700 font-medium mb-2">Description</label>
-                    <textarea id="taskDescription" rows="3" class="w-full border border-gray-300 rounded p-2" placeholder="Enter task description (optional)"></textarea>
+                    <textarea id="taskDescription" rows="3" class="w-full border border-gray-300 rounded p-2 drop-shadow-md" placeholder="Enter task description (optional)"></textarea>
                 </div>
-                <button type="submit" class="mt-4 bg-black text-white py-2 px-4 rounded hover:bg-gray-700">ADD TASK</button>
+                <button type="submit" class="mt-4 bg-black text-white py-2 px-4 rounded hover:bg-gray-700 ">ADD TASK</button>
             </form>
 
             <ul id="taskList" class="space-y-4"></ul>
-        </section>
+        </div>
+    </section>
+    <section >
+        <button class="show-tasks flex items-center mx-auto gap-2 px-6 py-2 text-black font-semibold bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 transition">
+            SHOW COMPLETED TASKS
+            <span class="text-gray-600">
+                ▼
+            </span>
+        </button>  
+     </section>
+    <section class="container-pomodoro m-10 bg-white  p-6 rounded-lg shadow-lg">
 
+        <h2 class="text-2xl font-semibold  mb-4 text-center">Pomodoro Timer</h2>
 
+        <div id="timerDisplay" class="text-center text-8xl font-bold mb-8">25:00</div>
+
+        <div class="flex justify-center space-x-4">
+            <button id="startTimer" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Start</button>
+            <button id="pauseTimer" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">Pause</button>
+            <button id="resetTimer" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Reset</button>
+        </div>
+
+        <div class="flex justify-center space-x-2 mt-2">
+            <button id="shortBreak" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Short Break (5 mins)</button>
+            <button id="longBreak" class="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">Long Break (15 mins)</button>
+        </div>
+    </section>
+    </main>
 </body>
 </html>
