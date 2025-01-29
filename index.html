@@ -15,9 +15,9 @@
         <h3 class="text-2xl ml-4 text-black font-bold">BE FOCUSED APP</h3>
     </header>
     <main>
-        <section class="container mx-auto p-4 drop-shadow-xl">
-            <div class="add-task-section bg-white p-6 m-13 rounded-lg shadow-lg mb-4">
-                <h2 class="text-2xl font-bold mb-4">ADD TASK</h2>
+        <section class="container mx-auto  p-4 drop-shadow-xl">
+            <div class="add-task-section  bg-white p-6 m-13 rounded-lg shadow-lg mb-4">
+                <h2 class="text-3xl font-bold mb-4 text-center font-serif">ADD TASK</h2>
 
                 <form id="taskForm" class="mb-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -42,14 +42,15 @@
                             class="w-full border border-gray-300 rounded p-2 drop-shadow-md"
                             placeholder="Enter task description (optional)"></textarea>
                     </div>
-                    <button type="submit" class="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-800 ">ADD
-                        TASK</button>
+                    <button type="submit" class="text-white bg-gradient-to-r mt-4 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">ADD TASK</button>
+
                 </form>
 
                 <ul id="taskList" class="space-y-4"></ul>
             </div>
         </section>
         <div class="show-tasks">
+            <h3 class="text-3xl font-bold mb-4 mt-4 bg-white text-center font-serif m-4 p-4 rounded-lg ">MY TASKS</h3>
             <button
                 class="show-tasks flex items-center mx-auto gap-2 px-6 py-2 text-black font-semibold bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 transition">
                 SHOW COMPLETED TASKS
@@ -69,8 +70,8 @@
                     </div>
                 </div>
                 <div class="space-x-2">
-                    <button class="editTask bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</button>
-                    <button class="deleteTask bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                    <button  class="editTask text-white bg-gradient-to-r mt-4 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">EDIT</button>
+                    <button  class="deleteTask text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">DELETE</button>
                 </div>
             </div>
 
@@ -91,11 +92,11 @@
             </div>
 
             <div class="flex justify-center space-x-2 mt-2">
-                <button id="shortBreak" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Short Break
+                <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Short Break
                     (5 mins)</button>
-                <button id="longBreak" class="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">Long Break
-                    (15 mins)</button>
-            </div>
+                <button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Long Break
+                        (15 mins)</button>
+                </div>
         </section>
     </main>
 
