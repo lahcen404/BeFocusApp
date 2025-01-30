@@ -34,17 +34,79 @@ taskForm.addEventListener('submit', (e) => {
 document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('toggleButton');
     const completedTasks = document.getElementById('completedTasks');
-    const toggleIcon = document.getElementById('toggleIcon');
 
     toggleButton.addEventListener('click', function() {
         if (completedTasks.classList.contains('hidden')) {
             completedTasks.classList.remove('hidden');
-            toggleButton.textContent = 'HIDE TASKS';
-            toggleIcon.textContent = '▲';
+            toggleButton.textContent = 'HIDE TASKS ▲';
+           
         } else {
             completedTasks.classList.add('hidden');
-            toggleButton.textContent = 'SHOW TASKS';
-            toggleIcon.textContent = '▼';
+            toggleButton.textContent = 'SHOW TASKS ▼';
+           
         }
     });
 });
+
+
+
+
+// Pomodoro Tiimer
+let timerInterval;
+let timerSeconds = 1500;
+
+const timerDisplay = document.getElementById('timerDisplay');
+const startTimer = document.getElementById('startTimer');
+const pauseTimer = document.getElementById('pauseTimer');
+const resetTimer = document.getElementById('resetTimer');
+const shortBreak = document.getElementById('shortBreak');
+const longBreak = document.getElementById('longBreak');
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+    const seconds = (timerSeconds % 60).toString().padStart(2, '0');
+    timerDisplay.textContent = `${minutes}:${seconds}`;
+}
+
+startTimer.addEventListener('click', () => {
+    if (!timerInterval) {
+        timerInterval = setInterval(() => {
+            if (timerSeconds > 0) {
+                timerSeconds--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                alert('Tiiime Complete !!!!!');
+            }
+        }, 1000);
+    }
+});
+
+pauseTimer.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+});
+
+resetTimer.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerSeconds = 1500;
+    updateTimerDisplay();
+});
+
+shortBreak.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerSeconds = 300;
+    updateTimerDisplay();
+});
+
+longBreak.addEventListener('click', () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerSeconds = 900;
+    updateTimerDisplay();
+});
+
+updateTimerDisplay();
