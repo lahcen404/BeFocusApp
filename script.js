@@ -9,7 +9,7 @@ taskForm.addEventListener('submit', (e) => {
     const description = document.getElementById('taskDescription').value;
 
     const taskItem = document.createElement('li');
-    taskItem.className = 'border border-gray-300 rounded p-4';
+    taskItem.className = 'border m-4 bg-white border-gray-300 rounded p-4';
     taskItem.innerHTML = `
         <div class="flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -21,7 +21,7 @@ taskForm.addEventListener('submit', (e) => {
                 </div>
             </div>
             <div class="space-x-2">
-                <button class="editTask bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Edit</button>
+                <button class="editTask bg-blue-500 text-white px-3 mb-2 py-1 rounded hover:bg-blue-600">Edit</button>
                 <button class="deleteTask bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
             </div>
         </div>
@@ -29,4 +29,22 @@ taskForm.addEventListener('submit', (e) => {
 
     taskList.appendChild(taskItem);
     taskForm.reset();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('toggleButton');
+    const completedTasks = document.getElementById('completedTasks');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    toggleButton.addEventListener('click', function() {
+        if (completedTasks.classList.contains('hidden')) {
+            completedTasks.classList.remove('hidden');
+            toggleButton.textContent = 'HIDE TASKS';
+            toggleIcon.textContent = '▲';
+        } else {
+            completedTasks.classList.add('hidden');
+            toggleButton.textContent = 'SHOW TASKS';
+            toggleIcon.textContent = '▼';
+        }
+    });
 });

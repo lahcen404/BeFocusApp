@@ -45,40 +45,21 @@
                     <button type="submit" class="text-white bg-gradient-to-r mt-4 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">ADD TASK</button>
 
                 </form>
-
-                <ul id="taskList" class="space-y-4"></ul>
             </div>
         </section>
         <div class="show-tasks">
             <h3 class="text-3xl font-bold mb-4 mt-4 bg-white text-center font-serif m-4 p-4 rounded-lg ">MY TASKS</h3>
-            <button
-                class="show-tasks flex items-center mx-auto gap-2 px-6 py-2 text-black font-semibold bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 transition">
-                SHOW COMPLETED TASKS
-                <span class="text-gray-600">
-                    ▼
-                </span>
+            <button id="toggleButton" class="show-tasks flex items-center mx-auto gap-2 px-6 py-2 text-black font-semibold bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-100 transition">
+                SHOW TASKS
+                <span id="toggleIcon" class="text-gray-600">▼</span>
             </button>
+            
+            <div id="completedTasks" class="hidden">
+                <ul id="taskList" class="space-y-4"></ul>
+            </div>
         </div>
           <!-- task lists -->
           <ul id="taskList" class="space-y-4"></ul>
-        
-        <!-- <section>
-            <div class="flex justify-between items-center bg-white p-4 rounded-lg shadow-lg mb-4 mx-4 mt-4">
-                <div class="flex items-center space-x-6">
-                    <input type="checkbox" class="markComplete w-6 h-6">
-                    <div>
-                        <h3 class="text-xl font-bold">Task Title</h3>
-                        <p class="text-sm text-gray-600">Task Description</p>
-                        <span class="text-xs font-medium bg-green-500 text-white px-6 py-1  rounded ">Priority</span>
-                    </div>
-                </div>
-                <div class="space-x-2">
-                    <button  class="editTask text-white bg-gradient-to-r mt-4 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">   EDIT</button>
-                    <button  class="deleteTask text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">DELETE</button>
-                </div>
-            </div>
-
-        </section> -->
 
         <section class="container-pomodoro m-10 bg-white  p-6 rounded-lg shadow-lg">
 
