@@ -41,12 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', function() {
         if (completedTasks.classList.contains('hidden')) {
             completedTasks.classList.remove('hidden');
-            toggleButton.childNodes[0].textContent = 'HIDE TASKS ';
-            toggleIcon.textContent = '▲';
+            toggleButton.childNodes[0].textContent = 'HIDE TASKS ▲';   
         } else {
             completedTasks.classList.add('hidden');
-            toggleButton.childNodes[0].textContent = 'SHOW TASKS ';
-            toggleIcon.textContent = '▼';
+            toggleButton.childNodes[0].textContent = 'SHOW TASKS ▼';
         }
     });
 
