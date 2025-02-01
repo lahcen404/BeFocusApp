@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const completedTasks = document.getElementById('completedTasks');
     const toggleIcon = document.getElementById('toggleIcon');
 
+    // Load tasks  localStorage
     loadTasks();
 
     taskForm.addEventListener('submit', (e) => {
@@ -14,25 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const priority = document.getElementById('taskPriority').value;
         const description = document.getElementById('taskDescription').value;
 
-        const taskItem = document.createElement('li');
-        taskItem.className = 'border m-4 bg-white border-gray-300 rounded p-4';
-        taskItem.innerHTML = `
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <input type="checkbox" class="markComplete w-5 h-5">
-                    <div>
-                        <h3 class="text-xl font-bold">${title}</h3>
-                        <p class="text-sm text-gray-600">${description}</p>
-                        <span class="text-xs font-medium bg-${priority === 'low' ? 'green' : priority === 'medium' ? 'yellow' : 'red'}-500 text-white px-2 py-1 rounded">${priority} Priority</span>
-                    </div>
-                </div>
-                <div class="space-x-2">
-                    <button class="editTask bg-blue-500 text-white px-3 mb-2 py-1 rounded hover:bg-blue-600">Edit</button>
-                    <button class="deleteTask bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
-                </div>
-            </div>
-        `;
-
+        const taskItem = createTaskItem({ title, priority, description });
         taskList.appendChild(taskItem);
         saveTask({ title, priority, description });
         taskForm.reset();
@@ -41,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', function() {
         if (completedTasks.classList.contains('hidden')) {
             completedTasks.classList.remove('hidden');
-            toggleButton.childNodes[0].textContent = 'HIDE TASKS ▲';   
+            toggleButton.childNodes[0].textContent = 'HIDE TASKS ▲';
         } else {
             completedTasks.classList.add('hidden');
             toggleButton.childNodes[0].textContent = 'SHOW TASKS ▼';
@@ -57,26 +40,54 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadTasks() {
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.forEach(task => {
-            const taskItem = document.createElement('li');
-            taskItem.className = 'border m-4 bg-white border-gray-300 rounded p-4';
-            taskItem.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center space-x-3">
-                        <input type="checkbox" class="markComplete w-5 h-5">
-                        <div>
-                            <h3 class="text-xl font-bold">${task.title}</h3>
-                            <p class="text-sm text-gray-600">${task.description}</p>
-                            <span class="text-xs font-medium bg-${task.priority === 'low' ? 'green' : task.priority === 'medium' ? 'yellow' : 'red'}-500 text-white px-2 py-1 rounded">${task.priority} Priority</span>
-                        </div>
-                    </div>
-                    <div class="space-x-2">
-                        <button class="editTask bg-blue-500 text-white px-3 mb-2 py-1 rounded hover:bg-blue-600">Edit</button>
-                        <button class="deleteTask bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
-                    </div>
-                </div>
-            `;
+            const taskItem = createTaskItem(task);
             taskList.appendChild(taskItem);
         });
+    }
+
+    function createTaskItem(task) {
+        const taskItem = document.createElement('li');
+        taskItem.className = 'border m-4 bg-white border-gray-300 rounded p-4';
+        taskItem.innerHTML = `
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <input type="checkbox" class="markComplete w-5 h-5">
+                    <div>
+                        <h3 class="text-xl font-bold">${task.title}</h3>
+                        <p class="text-sm text-gray-600">${task.description}</p>
+                        <span class="text-xs font-medium bg-${task.priority === 'low' ? 'green' : task.priority === 'medium' ? 'yellow' : 'red'}-500 text-white px-2 py-1 rounded">${task.priority} Priority</span>
+                    </div>
+                </div>
+                <div class="space-x-2">
+                    <button class="editTask bg-blue-500 text-white px-3 mb-2 py-1 rounded hover:bg-blue-600">Edit</button>
+                    <button class="deleteTask bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                </div>
+            </div>
+        `;
+
+        const editButton = taskItem.querySelector('.editTask');
+        const deleteButton = taskItem.querySelector('.deleteTask');
+
+        editButton.addEventListener('click', () => {
+            document.getElementById('taskTitle').value = task.title;
+            document.getElementById('taskPriority').value = task.priority;
+            document.getElementById('taskDescription').value = task.description;
+            taskList.removeChild(taskItem);
+            removeTask(task);
+        });
+
+        deleteButton.addEventListener('click', () => {
+            taskList.removeChild(taskItem);
+            removeTask(task);
+        });
+
+        return taskItem;
+    }
+
+    function removeTask(taskToRemove) {
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks = tasks.filter(task => task.title !== taskToRemove.title || task.priority !== taskToRemove.priority || task.description !== taskToRemove.description);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
     // Pomodoro Timer
