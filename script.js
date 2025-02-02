@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskList = document.getElementById('taskList');
     const toggleButton = document.getElementById('toggleButton');
     const completedTasks = document.getElementById('completedTasks');
-    const toggleIcon = document.getElementById('toggleIcon');
+    const errorMessage = document.getElementById('errorMessage');
 
     // Load tasks  localStorage
     loadTasks();
@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const title = document.getElementById('taskTitle').value;
         const priority = document.getElementById('taskPriority').value;
         const description = document.getElementById('taskDescription').value;
+       
+        if (!title) {
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        errorMessage.style.display = 'none'; 
+
 
         const taskItem = createTaskItem({ title, priority, description });
         taskList.appendChild(taskItem);
@@ -30,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleButton.childNodes[0].textContent = 'SHOW TASKS ▼';
         }
     });
+
+   
 
     function saveTask(task) {
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
