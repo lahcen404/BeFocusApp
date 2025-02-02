@@ -39,7 +39,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-   
+    taskList.addEventListener('change', (e) => {
+        if (e.target.classList.contains('markComplete')) {
+            const taskItem = e.target.closest('li');
+            const titleElement = taskItem.querySelector('h3');
+
+            if (e.target.checked) {
+                taskItem.classList.add('bg-green-200');
+                titleElement.classList.add('line-through');
+            } else {
+                taskItem.classList.remove('bg-green-200');
+                titleElement.classList.remove('line-through');
+            }
+        }
+    });
+    
 
     function saveTask(task) {
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
